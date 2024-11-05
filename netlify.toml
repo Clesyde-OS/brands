@@ -11,7 +11,7 @@
 
 [[redirects]]
   from = "/"
-  to = "https://github.com/home-assistant/brands"
+  to = "https://github.com/fdewasmes/brands"
   force = true
   status = 301
 
