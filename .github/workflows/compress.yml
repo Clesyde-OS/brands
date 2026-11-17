@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Find symlinked paths to ignore
         id: find
-        run: >-
-          echo "::set-output name=ignore::$(find -L src -xtype l -type d | sed -e 's#$#/**#' | head -c -1 | tr '\n' ',')"
+        run: |
+          printf 'ignore=%s\n' "$(find -L src -xtype l -type d | sed -e 's#$#/**#' | head -c -1 | tr '\n' ',')" >> "$GITHUB_OUTPUT"
       - name: Check ignored paths
         run: echo ${{ steps.find.outputs.ignore }} | tr ',' '\n'
       - name: Compress Images
