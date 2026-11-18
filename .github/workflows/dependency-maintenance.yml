@@ -30,7 +30,7 @@ jobs:
           if [[ -z "$BASE_SHA" ]]; then
             BASE_SHA="$(git rev-parse HEAD^)"
           fi
-          mapfile -t workflows < <(git diff --name-only "$BASE_SHA" HEAD -- .github/workflows | grep -E '\.ya?ml$' || true)
+          mapfile -t workflows < <(git diff --name-only "$BASE_SHA" HEAD -- .github/workflows | grep -E '^\.github/workflows/[^/]+\.ya?ml$' || true)
           if (( ${#workflows[@]} == 0 )); then
             workflows=(.github/workflows/dependency-maintenance.yml)
           fi
