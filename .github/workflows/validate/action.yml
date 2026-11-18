@@ -1,4 +1,5 @@
 name: "validate"
+description: "Validate existing brand image dimensions and formats"
 runs:
   using: "docker"
   image: "Dockerfile"
